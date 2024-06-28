@@ -202,6 +202,7 @@ SITE_ID = 1
 
 CMS_TEMPLATES = (
     ("base.html", _("Standard")),
+    ("helios_base.html", _("Helios Base")),
     ("index.html", _("Helios")),
     ("left-sidebar.html", _("Helios Left Sidebar")),
     ("right-sidebar.html", _("Helios Right Sidebar")),
