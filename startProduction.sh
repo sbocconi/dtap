@@ -1,5 +1,5 @@
 #!/bin/bash
-env_name=Demonstrator
+env_name=dtap
 
 if [ ! -f ./.secret_key ]
 then
@@ -10,7 +10,7 @@ fi
 if [ -z "$STY" ]
 then
     # we are not running in screen
-    exec screen -dm -S ${env_name} -L -Logfile labspace_$(date '+%d_%m_%Y_%H_%M_%S').log /bin/bash "$0";
+    exec screen -dm -S ${env_name} -L -Logfile dtap_$(date '+%d_%m_%Y_%H_%M_%S').log /bin/bash "$0";
     
 else
     # we are running in screen, provide commands to execute
