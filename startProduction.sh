@@ -3,8 +3,8 @@ env_name=dtap
 
 if [ ! -f ./.secret_key ]
 then
-    echo "File .secret_key is missing"
-    exit 1
+    echo "File .secret_key missing, generating one"
+    python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())' > ./.secret_key
 fi
 
 if [ -z "$STY" ]
