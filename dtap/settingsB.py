@@ -239,3 +239,5 @@ INTERNAL_IPS = [
 
 MEDIA_URL = "media/"
 MEDIA_ROOT = str(BASE_DIR.parent / "media")
+
+CSRF_TRUSTED_ORIGINS = ["https://dakterrasart.nl", "https://www.dakterrasart.nl"]
