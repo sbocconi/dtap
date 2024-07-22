@@ -15,7 +15,7 @@
 		<noscript><link rel="stylesheet" href="{% static 'css/noscript.css' %}" /></noscript>
 		{% render_block "css" %}
 	</head>
-	<body class="is-preload">
+	<body {% block body_attrs %}{% endblock %} >
 		{% cms_toolbar %}
 		<div id="page-wrapper">
 		

@@ -2,7 +2,9 @@
 {% load cms_tags menu_tags %}
 
 {% block title %}{% page_attribute "page_title" %}{% endblock title %}
-
+{% block body_attrs %}
+class="is-preload homepage"
+{% endblock %}
 {% block content %}
 <!-- Header -->
 <div id="header">
@@ -48,9 +50,10 @@
 <!-- <div class="wrapper style1">
 	{% placeholder "features" %}
 </div> -->
-<script type="text/javascript">
+
+<!-- <script type="text/javascript">
 	document.body.classList.add('homepage');
-</script>
+</script> -->
 
 {% endblock content %}
 	   
