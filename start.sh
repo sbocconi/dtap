@@ -34,6 +34,11 @@ fi
 
 pip install -r ./pip_requirements.txt
 
+if [ "${env_type} " == "PROD " -a ! -f ./.secret_key ]
+then
+    echo "File .secret_key missing, generating one"
+    python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())' > ./.secret_key
+fi
 
 
 if [ "${env_type} " == "PROD " ]
