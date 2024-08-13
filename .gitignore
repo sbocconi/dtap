@@ -7,3 +7,4 @@ __pycache__/
 .secret_key
 staticfiles
 .tempCurlStdOut
+db_backup.json

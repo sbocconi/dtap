@@ -1,6 +1,7 @@
 #!/bin/bash
 conda_env=ws
 env_type=${1}
+db_backup=db_backup.json
 
 if [ "${env_type} " == "PROD " ]
 then
@@ -49,6 +50,11 @@ fi
 
 python manage.py makemigrations --settings=${settings}
 python manage.py migrate --settings=${settings}
+
+if [ -f ${db_backup} ]
+then
+    python manage.py loaddata ${db_backup} --settings=${settings}
+fi
 
 # . ./util_functions.sh
 
