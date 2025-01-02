@@ -1,5 +1,12 @@
 #!/bin/bash
 
+update_packages() {
+    tmp_req_file='tmp_req.txt'
+    pip freeze > ${tmp_req_file}
+    sed -i 's/==/>=/g' ${tmp_req_file}
+    pip install -r ${tmp_req_file} --upgrade
+}
+
 create_user_cmd() {
 
     if [ "${1} " == "superuser " ]; then
