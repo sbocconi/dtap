@@ -1,7 +1,7 @@
 #!/bin/bash
 conda_env=ws
 env_type=${1}
-db_backup=db_backup.json
+db_backup=master.sqlite3.json
 
 if [ "${env_type} " == "PROD " ]
 then
@@ -30,7 +30,7 @@ fi
 if [ "${CONDA_DEFAULT_ENV} " != "${conda_env} " ]
 then
     source ${conda_shell}
-    conda activate ${conda_env}
+    conda activate ${conda_env} || exit 1
 fi
 
 pip install -r ./pip_requirements.txt
@@ -54,6 +54,7 @@ python manage.py migrate --settings=${settings}
 if [ -f ${db_backup} ]
 then
     python manage.py loaddata ${db_backup} --settings=${settings}
+    rm "${db_backup}"
 fi
 
 # . ./util_functions.sh
@@ -64,17 +65,6 @@ fi
 
 python -m manage runserver -v2 --settings=${settings}
 
-# if ! check_restroom
-# then
-#    exit 1
-# fi
-
-# if [ "${env_type} " == "PROD " ]
-# then
-#     SECRET_KEY=$(cat .secret_key) python manage.py runserver --settings=${settings}
-# else
-#     python manage.py runserver -v2 --settings=${settings}
-# fi
 
 
 
